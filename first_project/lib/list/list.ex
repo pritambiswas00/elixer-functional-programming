@@ -44,4 +44,16 @@ defmodule FirstProject.Lists do
   def concat_list(list) when is_list(list) do
      [1,2,3] ++ list
   end
+  def remove_element(nums, val) when is_list(nums) do
+     if length(nums) > 0  do
+       case nums do
+         [^val | tail] ->
+            remove_element(tail, val)
+          [head | tail] ->
+            [head | remove_element(tail, val)]
+       end
+     end
+    else
+      []
+  end
 end
