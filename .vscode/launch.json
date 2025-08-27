@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "mix_task",
+      "name": "Debug main.exs",
+      "request": "launch",
+      "projectDir": "${workspaceFolder}/data_structure_and_algorithms",
+      "task": "run",
+      "taskArgs": ["main.exs"],
+      "requireFiles": ["lib/algorithms.ex"],
+      "startApps": false,
+      "exitAfterTaskReturns": false
+    }
+  ]
+}

@@ -1,8 +1,13 @@
 defmodule FirstProject.Recursion.Reverse do
+  def reverse(num, acc \\ 0)
+
+  # base case
   def reverse(0, acc) do
     acc
   end
-  def reverse(num, acc \\ 0) do
+
+  # recursive case
+  def reverse(num, acc) do
     reverse(div(num, 10), acc * 10 + rem(num, 10))
   end
 end

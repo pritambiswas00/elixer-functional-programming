@@ -11,49 +11,55 @@ defmodule FirstProject.Lists do
   def sum_test([]) do
     0
   end
+
   def sum_test([h | t]) do
     h + sum_test(t)
   end
 
   def reverse_list(elements, acc \\ [])
+
   def reverse_list([], acc) do
     acc
   end
+
   def reverse_list([h | t], acc) do
     reverse_list(t, [h | acc])
   end
+
   @spec multiplication(list(number())) :: list(number())
   def multiplication(list) when is_list(list) do
-      Enum.map(list, fn x -> x * 2  end)
+    Enum.map(list, fn x -> x * 2 end)
   end
+
   def multiplication(_not_a_list) do
     {:error, "Expected a list"}
   end
+
   def first_letter_twice(s) when is_binary(s) do
     s
     |> String.graphemes()
     |> Enum.reduce_while(MapSet.new(), fn ch, seen ->
       if MapSet.member?(seen, ch) do
-        { :halt, ch }
+        {:halt, ch}
       else
         {:cont, MapSet.put(seen, ch)}
       end
-
     end)
   end
+
   def concat_list(list) when is_list(list) do
-     [1,2,3] ++ list
+    [1, 2, 3] ++ list
   end
-  def remove_element(nums, val) when is_list(nums) do
-     if length(nums) > 0  do
-       case nums do
-         [^val | tail] ->
-            remove_element(tail, val)
-          [head | tail] ->
-            [head | remove_element(tail, val)]
-       end
-     end
-    else
-      []
+
+  def remove_element([], _val), do: []
+
+  def remove_element([val | tail], val) do
+    remove_element(tail, val)
   end
+
+  def remove_element([head | tail], val) do
+    [head | remove_element(tail, val)]
+  end
+
+  
 end
